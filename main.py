@@ -16,13 +16,40 @@ def save_task(tasks):
 parser = argparse.ArgumentParser()
 parser.add_argument("task", type=str, nargs="?", help="Task to add")
 args = parser.parse_args()
+parser.add_argument("-l", "--list", help="List all tasks", action="store_true")
+
 
 if len(sys.argv) == 1:
     parser.print_help(sys.stderr)
     sys.exit(1)
     
 if args.task:
-    print(f"Task {args.task} added with ID of 1")
+    tasks = load_tasks()
+    if len(tasks) == 0:
+        new_id = 1
+    else:
+        new_id = tasks[-1]["id"] + 1
+    tasks.append({"id": new_id, "task": args.task, "done": False})
+    save_task(tasks)
 
-    if args.task:
+    print(f"Task {args.task} added with ID of {new_id}")
         
+
+
+
+if args.list:
+    tasks = load_tasks()
+    for task in tasks:
+        status = "x" if task["done"] else " "
+        print(f"[{status}] {task['id']}: {task['task']}")
+    sys.exit(0)
+elif args.task:
+    tasks = load_tasks()
+    if len(tasks) == 0:
+        new_id = 1
+    else:
+        new_id = tasks[-1]["id"] + 1
+    tasks.append({"id": new_id, "task": args.task, "done": False})
+    save_task(tasks)
+
+    print(f"Task {args.task} added with ID of {new_id}")
