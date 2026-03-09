@@ -1,22 +1,12 @@
 [
   {
     "id": 1,
-    "task": "h",
-    "done": true
+    "task": "hello",
+    "done": false
   },
   {
     "id": 2,
-    "task": "h",
-    "done": true
-  },
-  {
-    "id": 3,
-    "task": "h",
-    "done": true
-  },
-  {
-    "id": 4,
-    "task": "hello",
+    "task": "high",
     "done": false
   }
 ]

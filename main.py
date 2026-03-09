@@ -20,6 +20,7 @@ parser.add_argument("task", type=str, nargs="?", help="Task to add")
 parser.add_argument("-c", "--complete", type=int, help="Mark a task as complete by ID")
 parser.add_argument("-d", "--delete", type=int, help="Delete a task by ID")
 parser.add_argument("-l", "--list", help="List all tasks", action="store_true")
+parser.add_argument("-v", "--version", help="Display version", action="version", version="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1" )
 args = parser.parse_args()
 
 if len(sys.argv) == 1:
