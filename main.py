@@ -18,6 +18,7 @@ def save_task(tasks):
 parser = argparse.ArgumentParser()
 parser.add_argument("task", type=str, nargs="?", help="Task to add")
 parser.add_argument("-c", "--complete", type=int, help="Mark a task as complete by ID")
+parser.add_argument("-u", "--uncomplete", type=int, help="Mark a task as uncomplete by ID")
 parser.add_argument("-d", "--delete", type=int, help="Delete a task by ID")
 parser.add_argument("-p","--priority", type=int, choices=['high' ,'medium' ,'low'], help="Set task priority by ID")
 parser.add_argument("-l", "--list", help="List all tasks", action="store_true")
@@ -43,7 +44,15 @@ elif args.complete:
         if task["id"] == args.complete:
             task["done"] = True
             save_task(tasks)
-            print(f"Task {args.complete} marked as complete")
+            print(f"Task {args.complete} marked as complete.")
+            break
+elif args.uncomplete:
+    tasks = load_tasks()
+    for task in tasks:
+        if task["id"] == args.uncomplete:
+            task["done"] = False
+            save_task(tasks)
+            print(f"Task {args.uncomplete} marked as uncomplete.")
             break
 elif args.delete:
     tasks = load_tasks()
