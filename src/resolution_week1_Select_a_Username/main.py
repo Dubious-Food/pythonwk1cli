@@ -15,6 +15,11 @@ def save_task(tasks):
     with open(TASKS_FILE, "w") as file:
         json.dump(tasks, file, indent=2)
 
+def main():
+    parser = argparse.ArgumentParser()
+    # all your parser.add_argument lines
+    args = parser.parse_args()
+    
 parser = argparse.ArgumentParser()
 parser.add_argument("task", type=str, nargs="?", help="Task to add")
 parser.add_argument("-c", "--complete", type=int, help="Mark a task as complete by ID")
@@ -72,3 +77,7 @@ elif args.task:
     save_task(tasks)
     print(f"Task {args.task} added with ID of {new_id}")
 
+
+
+if __name__ == "__main__":
+    main()
