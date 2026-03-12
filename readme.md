@@ -1,0 +1,1 @@
+This is a simple to-do list. It was made for Resolution Python week one.
