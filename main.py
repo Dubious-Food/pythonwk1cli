@@ -19,6 +19,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("task", type=str, nargs="?", help="Task to add")
 parser.add_argument("-c", "--complete", type=int, help="Mark a task as complete by ID")
 parser.add_argument("-d", "--delete", type=int, help="Delete a task by ID")
+parser.add_argument("-p","--priority", type=int, choices=['high' ,'medium' ,'low'], help="Set task priority by ID")
 parser.add_argument("-l", "--list", help="List all tasks", action="store_true")
 parser.add_argument("-v", "--version", help="Display version", action="version", version="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1" )
 args = parser.parse_args()
@@ -29,9 +30,12 @@ if len(sys.argv) == 1:
 
 if args.list:
     tasks = load_tasks()
+    if len(tasks) == 0:
+            print(f"You have no tasks. How disapointing...")
     for task in tasks:
         status = "x" if task["done"] else " "
         print(f"[{status}] {task['id']}: {task['task']}")
+
     sys.exit(0)
 elif args.complete:
     tasks = load_tasks()
@@ -59,3 +63,6 @@ elif args.task:
     tasks.append({"id": new_id, "task": args.task, "done": False})
     save_task(tasks)
     print(f"Task {args.task} added with ID of {new_id}")
+
+elif args.priority:
+    tasks = load_tasks
