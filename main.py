@@ -52,7 +52,7 @@ elif args.uncomplete:
         if task["id"] == args.uncomplete:
             task["done"] = False
             save_task(tasks)
-            print(f"Task {args.uncomplete} marked as uncomplete.")
+            print(f"Task {args.uncomplete} marked as uncomplete. I used to be proud of you.")
             break
 elif args.delete:
     tasks = load_tasks()
