@@ -34,7 +34,6 @@ if args.list:
             print(f"You have no tasks. How disapointing...")
     for task in tasks:
         status = "x" if task["done"] else " "
-        priority = 
         print(f"[{status}] {task['id']}: {task['task']}")
 
     sys.exit(0)
